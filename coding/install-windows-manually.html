@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/x-icon" href="https://blogwithwinavia.samscodz.repl.co/blogwithwinavia.png">
+  <link rel="stylesheet" href="../style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to install Windows manually by winaviation2</title>
+</head>
+<body>
+  <div class="header">
+    <h1>How to install Windows manually | winaviation2</h1>
+  </div>
+  <br>
+  <div class="content">
+    <h2>Windows default installation</h2>
+    <br>
+    <p>Letting Windows installing itself would take a long time instead of we install Windows by our hands. Note: Installing Windows manually only works on GPT disks and Windows 8.x or later (actually you can install it on MBR disks, but im too lazy, you can search it up on Youtube)</p>
+    <br>
+    <p>So today winaviation2 is gonna teach you how to install Windows manually!</p>
+    <br>
+    <br>
+    <h2>Tutorial</h2>
+    <br>
+    <p>Now come to the steps, is pretty easy.</p>
+    <br>
+    <li>First, in the Windows Preinstallation Enviroment, press SHIFT + F10.</li>
+    <li>You will partition your disks. Type diskpart and enter.</li>
+    <li>Type lis dis and enter to see the disks you now have</li>
+    <li>Most computer will use disk 0 (you can choose any disk you wanted). Type sel dis x (replace x with the disk number you wanted to install Windows on it, here I will use disk 0).</li>
+    <li>Enter lis par to see the partitions.</li>
+    <li>Select every single partition and delete them using sel par x and del par (again, x is the partition number, also delete partitions will lost all data!! So remember to back it up)</li>
+    <li>After you done, enter conv gpt to convert the disk to gpt, if it says the disk is gpt already then ignore it.</li>
+    <li>Enter "cre par efi size=512" to create the boot partition.</li>
+    <li>Use the command "form fs=fat32 quick". Then use "ass letter w" to assign the boot vlolume letter. Use "active" to active the boot drive.</li>
+    <li>Now you create the volume that installs Windows on it. Enter "cre par pri".</li>
+    <li>Then you will do "form fs=ntfs quick", "ass letter c" and "active"</li>
+    <li>After that, you've done partition the disk. Now exit diskpart by enter "exit".</li>
+    <li>Now you will find the Windows version you wanted to install, by using the command below:</li>
+    <li>dism /Get-WimInfo /WimFile:X:\Sources\install.wim</li>
+    <br>
+    <p>Or: (for esd images)</p>
+    <br>
+    <li>dism /Get-WimInfo /WimFile:X:\Sources\install.esd</li>
+    <br>
+    <p>REMEMBER! Replace X with the drive letter that contains the Windows Preinstallation Enviroment (which created from a ISO file using a ISO burner software).</p>
+    <br>
+    <li>After that you will see lists of Windows versions, remember the index number that you wanted to install (Example: Windows 10 Home, index: 1)</li>
+    <li>This step, I will use index 1, replace /index:1 with any index number!! Use the command below:</li>
+    <br>
+    <p>dism /apply-image imagefile:X:\Sources\install.wim /index:1 /ApplyDir:C:\</p>
+    <p>Or</p>
+    <p>dism /apply-image imagefile:X:\Sources\install.esd /index:1 /ApplyDir:C:\</p>
+    <br>
+    <li>After it done and says "The operation completed successfully" then continue. Now we will add boot files to make Windows boot up. Use "bcdboot C:\Windows /s W:".</li>
+    <li>Then you are done installing Windows, now we will skip the OOBE to save time (optional). Enter regedit to open the Registry Editor, expand Computer category and select HKEY_LOCAL_MACHINE.</li>
+    <li>Press "File" on the upper left and select "Load hive". Navigate to C:\Windows\System32\config.</li>
+    <li>Select SYSTEM file and load press "Open" at the bottom right of the Explorer window. Call it "sys" and OK.</li>
+    <li>Navigate to Computer\HKEY_LOCAL_MACHINE\sys\Setup.</li>
+    <li>Edit the value data of CmdLine string value to cmd.exe</li>
+    <li>Close Registry and reboot the computer.</li>
+    <li>Wait for Windows to boot, Windows will open cmd.exe soon. Right at the Command Prompt opens, start windeploy.exe by using oobe\windeploy</li>
+    <li>As it done and tells Getting Ready, create a user:</li>
+    <p>net user x /add (replace x with the username you wanted!)</p>
+    <li>Ignore the error and enter: net localgroup /add administrators x (x is your previous created username)</li>
+    <li>Now you tweak the Registry a bit, here you will navigate to Computer\HKEY_LOCAL_MACHINE\SYSTEM</li>
+    <li>Select Setup and set three options value data to 0:</li>
+    <br>
+    <li>OOBEInProgress</li>
+    <li>SetupType</li>
+    <li>SetupInProgress</li>
+    <br>
+    <li>Now you go to Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies. Select System and add new DWORD called VerboseStatus with the value data of 1.</li>
+    <li>Close  Command Prompt to restart the computer. When it boots back and the big boot animation appears press SHIFT + F10 on your keyboard to open cmd.exe, open Registry by enter regedit. At Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies, select System and set EnableCursorSuppression value data to 0. Close cmd and wait until it says Please wait for the Windows Modules Installer, wait about 5 - 10 minutes, if it wont say anything else then hard reset your computer and it should work now!</li>
+    <br>
+    <p>Congratulations! You just finished installing Windows manually, now it ask for privacy settings in the like-OOBE screen then just turn everything off and continue.</li>
+    <br>
+    <br>
+                                                                                                                                                                               
+    
+    
+    
+    
+  </div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/x-icon" href="https://blogwithwinavia.samscodz.repl.co/blogwithwinavia.png">
+  <link rel="stylesheet" href="../style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to change Windows version by winaviation2</title>
+</head>
+<body>
+  <div class="header">
+    <h1>How to change Windows version to anything you want | winaviation2</h1>
+  </div>
+  <br>
+  <div class="content">
+<p>Note: The current Windows you're using won't change even you change the Windows version. This means changing the Windows version doesn't affect the OS.</p>
+    <br>
+    <p>The software that is required:</p>
+    <br>
+    <li>Resource Hacker</li>
+    <br>
+    <br>
+
+    <h2>How to change the Windows version.</h2>
+    <br>
+    <p>The result will shown in msinfo32 or winver.</p>
+    <br>
+    <li>First, we will open Resource Hacker, a 3rd-party software.</li>
+    <li>Click the open icon and navigate to C:\Windows\Branding\Basebrd\en-US\basebrd.dll.mui. Open that file.</li>
+    <li>Expand "String Table" and find the resource that contains the name of your current Windows version, for me, is Windows 10 Enterprise LTSC.</li> <!-- LTSC sucks gotcha gtg back --->
+    <li>Now you can change the Windows version simply by just edit the the text.</li>
+    <li>Save the file with the name "basebrd.dll.mui" (overwrites the old file) after you finished changing.</li>
+    <br>
+    <p>Now when you open msinfo32 or winver, it will display your custom Windows version.</p>
+
+    <br>
+    <br>
+    <h2>Changing winver Windows logo</h2>
+    <br>
+    <li>First, use any image editor and create your own custom logo (remember to save as .bmp and the image resolution needs to be 458 x 72)</li>
+    <li>Open Resource Hacker again. This time we will open C:\Windows\Branding\Basebrd\basebrd.dll</li>
+    <li>Select "Bitmap" and right click it, then click "Replace Bitmap".</li>
+    <li>Open the image that you created for the custom logo.</li>
+    <li>Now you will click "Replace".</li>
+    <br>
+    <p>Finally, you're done!</p>
+<br>
+    <br>
+    <h2>Changing the build version</h2>
+    <br>
+    <p>Yes, you can change the build version to anything you wanted, like changing from 19044 to Windows Balls Edition.</p>
+<br>
+    <p>Coming soon... Nah I don't think is coming soon, cuz I guess thats not possible...</p>
+<br>
+    <br>
+    <h2>Changing msconfig OS name</h2>
+    <br>
+    <p>When you open msconfig, you will see your default OS name, yes there is a way to change it. Normally you don't see any such options to rename, you must use cmd.exe</p>
+    <br>
+    <p>Tutorial!</p>
+    <br>
+    <li>Open cmd.exe</li>
+    <li>Enter this command: bcdedit /set {current} description "x"</li>
+    <br>
+    <p>Replace x with the name of your custom Windows version. After that you are done!</p>
+    <br>
+    <br>
+    
+  </div>
+  <br>
+</body>
+</html>

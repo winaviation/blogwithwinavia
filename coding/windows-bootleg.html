@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/x-icon" href="https://blogwithwinavia.samscodz.repl.co/blogwithwinavia.png">
+  <link rel="stylesheet" href="../style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Making a Windows Bootleg by winaviation2</title>
+</head>
+<body>
+  <div class="header">
+    <h1>Make a Windows Bootleg | winaviation2</h1>
+  </div>
+  <br>
+  <div class="content">
+    <h1>First, what is a Windows Bootleg?</h1>
+    <br>
+    <p>Windows Bootleg is a unofficial release of Microsoft and is a modified Windows version. I even have my own one.</p>
+    <br>
+    <h2>How to make your own Windows Bootleg</h2>
+    <br>
+    <p>Winaviation2 will teach you how to make one!</p>
+    <br>
+    <ul>
+    <li>First, you need a Windows Installation ISO which can be downloaded from official Microsoft's website.</li>
+    <p>Here I will use Windows 11 ISO</p>
+    <br>
+    <li>After you downloaded the ISO, extract it to a folder (name it anything but dont include space in it!)</li>
+    <br>
+    <li>You access the folder and go to sources, you will find install.esd or install.wim here. Open CMD as Administrator in sources.</li>
+    <br>
+    <li>Then you have to choose which Windows (11) version you will modify by choosing install.wim(esd) index using the command: Dism /Get-ImageInfo /imagefile:"insert install.wim(esd) file path here"</li>
+    <p>You will find some Windows version which was: Windows 11 Home, Windows 11 Pro, Windows 11 Pro N, Windows 11 Education... Check the index number of your Windows version and use the command below.</p>
+    <br>
+    <li>dism /export-image /SourceImageFile:"YourInstall.wim(esd)FilePath" /SourceIndex:YourIndexNumber /DestinationImageFile:YourCreatedFolderPath\install.wim(ThereWereNoEsd) /Compress:max /CheckIntegrity</li>
+    <br>
+    <li>Finally, you mount the new install.wim, create a folder called PATH in the folder that you created.</li>
+    <p>Use this command after you done the last step:</p>
+    <br>
+    <p>DISM /Mount-image /imagefile:YourCreatedFolderPath\install.wim /Index:1 /MountDir:"YourCreatedFolderPath\PATH" /optimize</p>
+    <br>
+    <li>After done mounting then you are freely to edit the Windows files! Easy, right? NO!</li>
+      <br>
+      <li>Even when you mounted the wim by yourself then you still didnt got enough permission to edit it, TrustedInstaller keeps it all away. Search for youtube tutorials for bypass.</li>
+      <br>
+      <li>After you done modifying the install.wim, we will unmount.</li>
+      <p>Use the command: dism /unmount-Wim  /MountDir:YourCreatedFolderPath\PATH /commit</p>
+      <br>
+      <li>Now you must delete or move the original install.wim(esd) to another location and then move the modified install.wim to sources.</li>
+      <br>
+      <li>Last step!</li>
+      <p>Now finally, we will build the new ISO. Winaviation2 recommended you to use MODWIN, a third party tool which uses to modify ISOs. Download version 3.2 <a target="_blank" href="https://github.com/01101010110/MODWIN/releases/download/v3.2/MODWIN.EXE">here</a> (also is for 64 bits computer only)</p>
+      <br>
+      <li>After you done downloading and opened the exe, go to C:\MODWIN and open modwin.bat</li>
+      <br>
+      <li>Then you press 7 and enter.</li>
+      <br>
+      <li>Copy and paste the ISO files which you extracted earlier to C:\MODWIN\ISO</li>
+      <br>
+      <li>Now in the modwin.bat window, you press 1 and then enter.</li>
+      <br>
+      <li>Then after it finished, finally, we're done! You will find yourself the new ISO called winmod.iso in C:\MODWIN\MOD.</li>
+      <br>
+      <br>
+    </ul>
+  </div>
+  <br>
+</body>
+</html>
+

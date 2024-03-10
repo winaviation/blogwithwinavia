@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/x-icon" href="https://blogwithwinavia.samscodz.repl.co/blogwithwinavia.png">
+  <link rel="stylesheet" href="../style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to make Discord bot with node.js by samscodz</title>
+</head>
+<body>
+  <div class="header">
+    <h1>How to make Discord bot with node.js | samscodz</h1>
+  </div>
+  <br>
+  <div class="content">
+    <p>Hello it's samscodz back to the coding category, and today I will be teaching you guys on how to make discord bot using node.js!</p>
+    <h2>What's a "Discord bot"?</h2>
+    <p>Discord bot is an application that we code inside Discord. That application can interact with the Discord features if we code it right. Discord bot can do banning, kicking, timing out, warning, etc! Discord bot can also be a game, for example economy bots (the bot type i usually make).</p>
+    <br>
+    <h2>How to make one?</h2>
+    <p>To make it, head on to <a target="_blank" href="https://discord.com/developers/applications">this site</a>. And then, see top-left. There's a button that says "<a target="_blank" href="https://cdn.discordapp.com/attachments/972856340437434398/1117774978553749504/image.png">New application</a>", click it. After that, you'll see a <a target="_blank" href="https://cdn.discordapp.com/attachments/972856340437434398/1117775817427136563/image.png">form</a> that asks you name and checking something. The name input means the name of the bot, I will make the name "ChillinBot!" here.</p>
+    <p>After doing those, you'll see <a target="_blank" href="https://cdn.discordapp.com/attachments/972856340437434398/1117776916368326797/image.png">this</a>. Click on <a target="_blank" href="https://cdn.discordapp.com/attachments/972856340437434398/1117777176507453450/image.png">bot</a>. There will be a button that says "Reset token". Don't worry, because that's normal. Now, Discord automatically creates a bot account once an application was made. Once you click "Reset token", you'll see <a target="_blank" href="https://cdn.discordapp.com/attachments/972856340437434398/1117777941103923371/image.png">this</a>. Make sure to not share your token to other people, because if they get hands to them, they can inject any code to that bot anytime and anywhere. If you feel that your token is compromised, reset the token by clicking "Reset token" again and changing them on your code.</p>
+    <h2>Ok I've done this step, then how to code my bot with node.js?</h2>
+    <p>To code your bot, make a node.js server. There's a lot of options on where, but if you want to make a testing bot, choose using <a target="_blank" href="https://replit.com/">Replit</a>. It's a free hosting place, and it also gives you FREE domain!</p>
+    <p>After logging in, create a new REPL and choose Node.js template..</p>
+    <video src="create-new-repl.mp4" width="device-width" height="device-width" controls>
+      Your browser doesn't support video attachment.
+    </video>
+    <br>
+    <p>After doing that, we're going to paste our token in a secret, a default enviromental variables in Replit.</p>
+    <br>
+    <video src="making-a-secret.mp4" width="device-width" height="device-width" controls>
+      Your browser doesn't support video attachment.
+    </video>
+    <br>
+    <p>After that, paste this setup code</p>
+    <pre>
+      <code>
+const { Client, Events, GatewayIntentBits } = require('discord.js');
+const token = process.env.token
+
+const client = new Client({
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.GuildMembers,
+    GatewayIntentBits.MessageContent
+  ]
+});
+
+client.once(Events.ClientReady, (c) => {
+  console.log(`Ready! Logged in as ${c.user.tag}.`)
+});
+
+client.login(token)
+      </code>
+    </pre>
+    <p>At this point, if you run the server (by clicking button run), you should bring the bot online. To see, go back to Discord developer portal and invite your bot. To invite your bot, head to Oauth2 and click URL generator. There's a scope checklists. Check "bot" and "applications.commands". Give your bots permissions. Copy and paste the invite link to a browser and invite your bot into the server you want.</p>
+  </div>
+  <br>
+</body>
+</html>

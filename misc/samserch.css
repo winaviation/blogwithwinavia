@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit&family=Nunito&display=swap');
+
+:root {
+  --primary-color: #0E4C92;
+  --primary-transparent: #7bace5;
+  --secondary-color: #4177b4;
+  --secondary-transparent: #84addb;
+  --background-color: #1f1f1f;
+  --main-text-color: #000000;
+  --alternate-text-color: #000000;
+}
+html, body {
+  font-family: "Kanit", sans-serif;
+  background: var(--background-color);
+  color: var(--main-text-color);
+}
+
+* {
+  box-sizing: border-box;
+  font-weight: 400;
+  margin: 0;
+}
+
+.header {
+  top: 0;
+  width: device-width;
+  z-index: 1;
+  color: var(--main-text-color);
+  background: var(--primary-color);
+  padding: 15px 15px;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.content {
+  padding-left: 15px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+button {
+  height: 50px;
+  width: 200px;
+  display: inline-block;
+  background: var(--secondary-color);
+  border: solid;
+  border-radius: 4px;
+  padding: 10px;
+  cursor: pointer;
+  font-family: var(--font-family);
+  color: var(--main-text-color);
+  font-size: 17px;
+  transition: background 0.5s, transform 0.6s, border 0s;
+}
+
+button:hover {
+  background: var(--secondary-transparent);
+}
+
+button:active {
+  transform: scale(0.98);
+  transition: 0.1s;
+  background: var(--primary-transparent);
+}
+
+
+
+a {
+  color: var(--secondary-transparent)
+}
+
+details {
+  border-radius: 4px;
+  transition: background 0.5s, transform 0.5s, border 0s;
+  padding: 10px 10px;
+}
+
+details[open] {
+  padding-bottom: 5px;
+}
+
+details > *:not(summary) {
+  margin: 20px;
+}
+
+details summary {
+  cursor: pointer;
+  background: #3a5b7a;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 4px;
+  transition: 0.8s;
+  pointer-events: auto;
+}
+
+details summary:hover {
+  background: #172633;
+}
+
+details summary:active {
+  transform: scale(0.99);
+  transition: 0.5s;
+}
+
+details[open] summary {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+pre {
+  background: var(--primary-color);
+  border-radius: 4px;
+  word-wrap: break-all;
+  overflow: auto;
+}
+
+b {
+  font-weight: 700;
+}
+
+
+
+
+.gcse-search { padding: 1rem;}
+      .gsc-control { font-family: arial, sans-serif; background-color: #1f1f1f !important; width: 500px; border-radius: 3rem; padding: 7px 20px !important;}
+      .gsc-input-box { border: 1px solid #1f1f1f;background: #1f1f1f; border-radius: 10px; padding: 1px 10px; }
+      #gsc-i-id1 { color: #000 !important; line-height: 1.2 !important; background: none !important; font-size: 1rem !important; }
+      .gsc-search-button-v2 { padding: 0.5rem !important; cursor: pointer; border-radius: 50%; }
+

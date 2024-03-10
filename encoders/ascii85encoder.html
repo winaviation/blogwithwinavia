@@ -1,0 +1,80 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <link rel="icon" type="image/x-icon" href="https://blogwithwinavia.samscodz.repl.co/blogwithwinavia.png">
+    <link rel="stylesheet" href="../style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog with Winavia</title>
+</head>
+<body>
+  <body>
+  <div class="header">
+    <h1>Ascii85 Encoder</h1>
+  </div>
+    <br>
+  <div class="content">
+    <h1>Encoding</h1>
+    <hr>
+    <br>
+    <input type="text" id="text-input" placeholder="Enter text to encode">
+    <br>
+    <button onclick="encodeText()">Encode</button>
+    <br>
+    <span id="encoded-text"></span>
+    <script>
+      function encodeText() {
+        const text = document.getElementById('text-input').value;
+
+        if (!text) {
+          alert('Please enter text to encode.');
+          return;
+        }
+
+        const encodedText = ascii85Encode(text);
+
+        document.getElementById('encoded-text').textContent = encodedText;
+      }
+
+      function ascii85Encode(text) {
+        const byteArray = new Uint8Array(text.length);
+        for (let i = 0; i < text.length; i++) {
+          byteArray[i] = text.charCodeAt(i);
+        }
+
+        const encodedByteArray = [];
+        let buffer = 0;
+        let count = 0;
+        for (const byte of byteArray) {
+          buffer = (buffer << 8) | byte;
+          count++;
+          if (count === 4) {
+            for (let i = 0; i < 5; i++) {
+              const digit = (buffer % 85) + 33;
+              encodedByteArray.push(digit);
+              buffer = Math.floor(buffer / 85);
+            }
+            count = 0;
+            buffer = 0;
+          }
+        }
+
+        if (count > 0) {
+          for (let i = count; i < 4; i++) {
+            buffer = (buffer << 8) | 0;
+          }
+          for (let i = 0; i < 5; i++) {
+            const digit = (buffer % 85) + 33;
+            encodedByteArray.push(digit);
+            buffer = Math.floor(buffer / 85);
+          }
+        }
+
+        return String.fromCharCode.apply(null, encodedByteArray);
+      }
+
+    </script>
+  </div>
+</body>
+</html>

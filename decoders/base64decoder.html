@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- <meta http-equiv="refresh" content="30; url=https://youtu.be/m_Lmec5ViOQ"> -->
+  <link rel="icon" type="image/x-icon" href="https://blogwithwinavia.samscodz.repl.co/blogwithwinavia.png">
+  <link rel="stylesheet" href="../style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Base64 Decoder</title>
+</head>
+<body>
+  <div class="header">
+    <h1>Base64 Decoder</h1>
+  </div>
+  <br>
+  <div class="content">
+    <h2>Decoding</h2>
+    <hr>
+    <label for="encodedString">Enter encoded text:</label>
+    <br>
+    <input type="text" id="encodedString" placeholder="Enter encoded text">
+    <br>
+    <button onclick="decodeBase64()">Decode</button>
+
+    <div id="decodedString"></div>
+
+    <script>
+      function decodeBase64() {
+        try {
+        const encodedText = document.getElementById('encodedString').value;
+        const decodedText = atob(encodedText);
+        document.getElementById('decodedString').innerHTML = `Decoded Text: ${decodedText}`;
+        } catch (e) {
+          document.getElementById('decodedString').innerHTML = `Decoding error`
+          console.error(e)
+        }
+      }
+    </script>
+  </div>
+</body>
+</html>
+
